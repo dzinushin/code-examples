@@ -12,8 +12,19 @@ fun main(args: Array<String>) {
         val pi = 3.1415
         log.info { "Logging in info level pi: $pi" }
 
-        val z = 1/0
+        foo()
     } catch (e : Exception) {
         log.error(e) { "logging error info with exception: " }
     }
 }
+
+
+fun foo() {
+    bar()
+}
+
+fun bar() {
+    val z = 1/0
+}
+
+fun fizzbazz()
