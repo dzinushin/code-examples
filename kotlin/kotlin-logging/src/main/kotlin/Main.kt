@@ -26,5 +26,3 @@ fun foo() {
 fun bar() {
     val z = 1/0
 }
-
-fun fizzbazz()
