@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-cloud-stream-functional
+
+  cloud:
+    stream:
+      function:
+        definition: fizzBuzzProducer;fizzBuzzProcessor;fizzBuzzConsumer
+
+      bindings:
+        fizzBuzzProducer-out-0:
+          destination: numbers
+        fizzBuzzProcessor-in-0:
+          destination: numbers
+          group: ${spring.application.name}
+        fizzBuzzProcessor-out-0:
+          destination: fizz-buzz
+        fizzBuzzConsumer-in-0:
+          destination: fizz-buzz
+          group: ${spring.application.name}
