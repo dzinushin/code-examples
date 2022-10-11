@@ -7,6 +7,9 @@ import (
 	"itf/robot"
 )
 
+// check that Robot implements Worker interface
+var _ company.Worker = (*robot.Robot)(nil)
+
 func main() {
 
 	p := person.Person{Name: "Person"}
@@ -32,4 +35,6 @@ func main() {
 
 	var worker2 company.Worker = &p2
 	c.Hire(worker2)
+	println()
+	println(c.String())
 }
