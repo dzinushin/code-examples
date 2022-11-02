@@ -6,6 +6,7 @@ fun main(args: Array<String>) {
     rangesDemo()
     scopeFunctionsDemo()
     enumDemo()
+    lambdasDemo()
 }
 
 
