@@ -16,4 +16,7 @@ fun lambdasDemo() {
     println("Oldest person: ${persons.maxBy( { it.age } ) }")
     println("Oldest person: ${persons.maxBy { it.age }}")
     println("Oldest person: ${persons.maxBy(Person::age)}")
+
+
+    println( persons.joinToString { it.name })
 }

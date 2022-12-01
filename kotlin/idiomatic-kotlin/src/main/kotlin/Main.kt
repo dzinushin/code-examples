@@ -7,6 +7,7 @@ fun main(args: Array<String>) {
     scopeFunctionsDemo()
     enumDemo()
     lambdasDemo()
+    demoMaps()
 }
 
 
