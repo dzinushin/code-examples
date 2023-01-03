@@ -1,0 +1,51 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        # example of proxying to other host with same route
+        # curlie https://httpbin.org/uuid
+        # curlie -H Host:example.com :8080/uuid
+        - id: route1
+          uri: https://httpbin.org
+          predicates:
+            - Path=/uuid
+            - Host=**.example.com
+        # example of proxying to other host with route rewrite
+        # curlie https://httpbin.org/uuid
+        # curlie -H Host:example.com :8080/demo
+        - id: route2
+          uri: https://httpbin.org
+          predicates:
+            - Path=/demo
+            - Host=**.example.com
+          filters:
+            - SetPath=/uuid
+        # example of proxying with adding query params
+        # curlie "https://httpbin.org/drip?duration=0&numbytes=100&delay=1"
+        # curlie :8080/drip/1
+        # curlie :8080/drip/0
+        - id: route3
+          uri: https://httpbin.org
+          predicates:
+            - Path=/drip/{delay}
+          filters:
+            - SetPath=/drip
+            - AddRequestParameter=duration, 0
+            - AddRequestParameter=numbytes, 100
+            - AddRequestParameter=delay, {delay}
+        # example using circuit breaker with fallback
+        # curlie :8080/cbdemo/2
+        # curlie :8080/cbdemo/5
+        - id: route4
+          uri: https://httpbin.org
+          predicates:
+            - Path=/cbdemo/{delay}
+          filters:
+            - SetPath=/drip
+            - AddRequestParameter=duration, 0
+            - AddRequestParameter=numbytes, 100
+            - AddRequestParameter=delay, {delay}
+            - name: CircuitBreaker
+              args:
+                name: myCircuitBreaker
+                fallbackUri: forward:/fallback/drip
