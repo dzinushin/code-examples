@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo-application
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
