@@ -6,6 +6,8 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,18 @@ class DemoApplicationTests {
 
 	protected RequestSpecification requestSpecification;
 
+	@BeforeAll
+	static void beforeAll() {
+		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+	}
+
+	@BeforeEach
+	void setUp() {
+		requestSpecification = new RequestSpecBuilder()
+				.setPort(localServerPort)
+				.build();
+	}
+
 	@Test
 	void contextLoads() {
 	}
@@ -44,10 +58,6 @@ class DemoApplicationTests {
 
 	@Test
 	void should_work_readiness_probe() {
-		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-		requestSpecification = new RequestSpecBuilder()
-				.setPort(localServerPort)
-				.build();
 
 		given(requestSpecification)
 			.when()
