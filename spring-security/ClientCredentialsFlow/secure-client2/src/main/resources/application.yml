@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          demo-client:
+            client-id: "bb4664a3-fcd5-4b79-8bc0-e874f74e1399"
+            client-secret: ${CLIENT_SECRET}
+            clientAuthenticationMethod: "client_secret_post"
+            authorizationGrantType: "client_credentials"
+            provider: "demo-client"
+        provider:
+          demo-client:
+            token-uri: "http://127.0.0.1:4444/oauth2/token"
+server:
+  port: 8081

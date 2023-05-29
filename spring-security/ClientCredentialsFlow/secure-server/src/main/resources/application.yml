@@ -1,3 +1,4 @@
+
 spring:
   security:
     oauth2:
@@ -6,3 +7,5 @@ spring:
           introspection-uri: http://127.0.0.1:4445/admin/oauth2/introspect
           client-id: client
           client-secret: secret
+server:
+  port: 8080
