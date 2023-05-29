@@ -1,0 +1,20 @@
+package com.example.secureclient2.configuration;
+
+import feign.Logger;
+import org.springframework.cloud.openfeign.security.OAuth2AccessTokenInterceptor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
+
+@Configuration
+public class FeignConfiguration {
+//    @Bean
+    public OAuth2AccessTokenInterceptor defaultOAuth2AccessTokenInterceptor1(OAuth2AuthorizedClientManager oAuth2AuthorizedClientManager) {
+        return new OAuth2AccessTokenInterceptor("demo-client", oAuth2AuthorizedClientManager);
+    }
+
+    @Bean
+    public Logger.Level feignLoggingLevel() {
+        return Logger.Level.HEADERS;
+    }
+}

@@ -1,0 +1,38 @@
+serve:
+  cookies:
+    same_site_mode: Lax
+
+urls:
+  self:
+    issuer: http://127.0.0.1:4444
+  consent: http://127.0.0.1:3000/consent
+  login: http://127.0.0.1:3000/login
+  logout: http://127.0.0.1:3000/logout
+
+secrets:
+  system:
+    - youReallyNeedToChangeThis
+
+oidc:
+  subject_identifiers:
+    supported_types:
+      - pairwise
+      - public
+    pairwise:
+      salt: youReallyNeedToChangeThis
+
+ttl:
+  
+  ## access_token ##
+  #
+  # Configures how long access tokens are valid.
+  #
+  # Default value: 1h
+  #
+  # Set this value using environment variables on
+  # - Linux/macOS:
+  #    $ export TTL_ACCESS_TOKEN=<value>
+  # - Windows Command Line (CMD):
+  #    > set TTL_ACCESS_TOKEN=<value>
+  #
+  access_token: 2m

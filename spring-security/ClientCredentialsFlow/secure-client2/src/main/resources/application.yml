@@ -14,3 +14,12 @@ spring:
             token-uri: "http://127.0.0.1:4444/oauth2/token"
 server:
   port: 8081
+
+feign:
+  oauth2:
+    enabled: true
+    clientRegistrationId: demo-client
+
+logging:
+  level:
+    com.example.secureclient2.clients.SecureServiceClient: DEBUG
