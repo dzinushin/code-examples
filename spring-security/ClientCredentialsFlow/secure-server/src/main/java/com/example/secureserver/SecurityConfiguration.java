@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.ser
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-//    @Value("${spring.security.oauth2.resourceserver.opaquetoken.introspection-uri}")
+    //    @Value("${spring.security.oauth2.resourceserver.opaquetoken.introspection-uri}")
 //    String introspectionUri;
 //
 //    @Value("${spring.security.oauth2.resourceserver.opaquetoken.client-id}")
@@ -23,8 +23,10 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .requestMatchers("/public/**").permitAll()
+                                .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::opaqueToken)
 //                .oauth2ResourceServer((oauth2) -> oauth2

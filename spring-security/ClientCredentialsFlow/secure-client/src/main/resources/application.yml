@@ -1,10 +1,19 @@
 spring:
+#  cloud:
+#    openfeign:
+#      client:
+#        config:
+#          secureServiceClient:
+#            requestInterceptors:
+#              - org.springframework.cloud.openfeign.security.OAuth2AccessTokenInterceptor
+#          UnsecureServiceClient:
+#            requestInterceptors: []
   security:
     oauth2:
       client:
         registration:
           demo-client:
-            client-id: "bb4664a3-fcd5-4b79-8bc0-e874f74e1399"
+            client-id: ${CLIENT_ID}
             client-secret: ${CLIENT_SECRET}
             clientAuthenticationMethod: "client_secret_post"
             authorizationGrantType: "client_credentials"
@@ -14,3 +23,9 @@ spring:
             token-uri: "http://127.0.0.1:4444/oauth2/token"
 server:
   port: 8081
+
+feign:
+
+logging:
+  level:
+    com.example.secureclient.clients: DEBUG

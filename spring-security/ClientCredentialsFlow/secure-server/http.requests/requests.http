@@ -34,7 +34,11 @@ token={{access_token}}
 
 ### call resource server
 GET http://localhost:8080/hello
+x-client-id: 101
 Authorization: Bearer {{access_token}}
 
-### call resource server
+### call resource server without auth token
 GET http://localhost:8080/hello
+
+### call resource server public endpoint
+GET http://localhost:8080/public/hello
