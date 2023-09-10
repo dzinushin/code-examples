@@ -1,0 +1,9 @@
+GET http://localhost:8080/ping
+###
+
+GET {{api-service1-url}}/ping1
+Accept: application/json
+###
+
+GET {{api-service2-url}}/ping2
+Accept: application/json

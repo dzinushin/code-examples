@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+<!--    <springProfile name="logging-test, k8s, local">-->
+        <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <fieldNames>
+                    <timestamp>date</timestamp>
+                    <logger>logger</logger>
+                    <version>[ignore]</version>
+                    <thread>[ignore]</thread>
+                    <levelValue>[ignore]</levelValue>
+                </fieldNames>
+                <customFields>
+                    {
+                        "message_type": "app",
+                        "runtime": "jvm"
+                    }
+                </customFields>
+            </encoder>
+        </appender>
+        <root level="info">
+            <appender-ref ref="json"/>
+        </root>
+<!--    </springProfile>-->
+<!--    <springProfile name="default, test">-->
+<!--        <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+<!--    </springProfile>-->
+</configuration>
