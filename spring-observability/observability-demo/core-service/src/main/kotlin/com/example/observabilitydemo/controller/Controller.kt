@@ -14,8 +14,10 @@ class Controller(private val pingService: PingService) {
     @Observed
     @GetMapping("/ping")
     fun ping(): String {
-        val traceId = MDC.get("traceId")
-        var spanId = MDC.get("spanId")
+//        val traceId = MDC.get("traceId")
+//        var spanId = MDC.get("spanId")
+        val contextMap = MDC.getCopyOfContextMap()
+        log.info { "contextMap: $contextMap" }
         try {
             log.info { "ping" }
             return pingService.ping()
