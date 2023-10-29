@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: books
+server:
+  port: 9001
