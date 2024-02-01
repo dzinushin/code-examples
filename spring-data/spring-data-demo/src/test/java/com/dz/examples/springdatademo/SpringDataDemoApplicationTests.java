@@ -1,8 +1,8 @@
-package com.dz.examples.springdata;
+package com.dz.examples.springdatademo;
 
-import com.dz.examples.springdata.entities.TestEntity;
-import com.dz.examples.springdata.repository.TestRepository;
-import com.dz.examples.springdata.service.SomeService;
+import com.dz.examples.springdatademo.entities.TestEntity;
+import com.dz.examples.springdatademo.repository.TestRepository;
+import com.dz.examples.springdatademo.service.SomeService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

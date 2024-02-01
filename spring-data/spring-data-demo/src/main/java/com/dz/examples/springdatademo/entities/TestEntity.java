@@ -1,4 +1,4 @@
-package com.dz.examples.springdata.entities;
+package com.dz.examples.springdatademo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

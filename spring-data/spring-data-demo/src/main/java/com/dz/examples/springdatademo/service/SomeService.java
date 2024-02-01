@@ -1,7 +1,7 @@
-package com.dz.examples.springdata.service;
+package com.dz.examples.springdatademo.service;
 
-import com.dz.examples.springdata.entities.TestEntity;
-import com.dz.examples.springdata.repository.TestRepository;
+import com.dz.examples.springdatademo.entities.TestEntity;
+import com.dz.examples.springdatademo.repository.TestRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

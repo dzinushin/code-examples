@@ -1,4 +1,4 @@
-package com.dz.examples.springdata;
+package com.dz.examples.springdatademo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

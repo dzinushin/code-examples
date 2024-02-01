@@ -1,6 +1,6 @@
-package com.dz.examples.springdata.repository;
+package com.dz.examples.springdatademo.repository;
 
-import com.dz.examples.springdata.entities.TestEntity;
+import com.dz.examples.springdatademo.entities.TestEntity;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
