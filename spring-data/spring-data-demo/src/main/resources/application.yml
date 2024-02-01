@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-data-demo
+#  datasource:
+#    hikari:
+#      maximum-pool-size: 10
+#      minimum-idle: 2
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: test
+
+  flyway:
+    schemas: test
+
+  main:
+    allow-circular-references: true
