@@ -1,0 +1,19 @@
+# create session
+POST {{serviceUrl}}/session
+Content-Type: application/json
+
+{
+  "sessionId": "{{sessionId}}",
+  "oid": "{{oid}}",
+  "token": "token"
+}
+###
+
+GET {{serviceUrl}}/session?session-id={{sessionId}}
+Accept: application/json
+
+###
+
+GET {{serviceUrl}}/user?user-id={{userId}}
+Accept: application/json
+###

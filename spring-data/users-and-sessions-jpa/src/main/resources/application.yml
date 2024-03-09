@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: users-and-sessions
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none  #validate
+    properties:
+      hibernate:
+        default_schema: ${spring.application.name}
+        format_sql: true
+    show-sql: true
+  flyway:
+    schemas: ${spring.application.name}
