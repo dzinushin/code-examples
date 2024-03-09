@@ -9,6 +9,7 @@ import com.example.usersandsessions.repositories.UsersRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
@@ -32,15 +33,24 @@ public class UserService {
         }
 
         try {
-
             User user = new User();
             user.setOid(oid);
             User newUser = usersRepository.save(user);
             return newUser;
         }
+        catch (DataIntegrityViolationException dive) {
+            log.warn("DataIntegrityViolationException while save new user oid: {} {}", oid, dive.getMessage());
+
+            optionalUser = usersRepository.findFirstByOid(oid);
+
+            if (optionalUser.isEmpty()) {
+                throw new RuntimeException(String.format("User with oid: %s not found after DataIntegrityViolationException", oid));
+            }
+            return optionalUser.get();
+        }
         catch (Exception e) {
             String message = String.format("Exception while save new user oid: %s ", oid);
-            log.warn( message, e);
+            log.error(message, e);
         }
 
         return null;

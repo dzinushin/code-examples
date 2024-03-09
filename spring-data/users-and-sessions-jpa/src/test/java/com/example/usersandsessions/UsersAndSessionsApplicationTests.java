@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -82,5 +83,26 @@ class UsersAndSessionsApplicationTests {
 		savedSession.setExpiredAt(LocalDateTime.now().plusMinutes(15));
 		Session updatedSession = sessionRepository.save(savedSession);
 		log.info("updatedSession: {}", updatedSession);
+	}
+
+	@Test
+	void unique_constraint_violation_exception() {
+		String oid = "oid";
+
+		User user1 = new User();
+		user1.setOid(oid);
+		User savedUser1 = usersRepository.save(user1);
+
+		User user2 = new User();
+		user2.setOid(oid);
+
+		try {
+			User savedUser2 = usersRepository.save(user2);
+		} catch (DataIntegrityViolationException e) {
+			log.error("exception text: {}", e.getMessage());
+//			log.error("Exception: ", e);
+		}
+
+
 	}
 }
