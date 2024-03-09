@@ -39,6 +39,7 @@ public class UserService {
             return newUser;
         }
         catch (DataIntegrityViolationException dive) {
+            // process error on concurrent insert
             log.warn("DataIntegrityViolationException while save new user oid: {} {}", oid, dive.getMessage());
 
             optionalUser = usersRepository.findFirstByOid(oid);
